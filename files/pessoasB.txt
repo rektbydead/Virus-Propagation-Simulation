@@ -1,0 +1,35 @@
+PauloPires1  23  S
+SofiaA4fA  23  S
+Tomas1vsa1   12   I
+PauloPires2   67    D   10
+MarcoMarquesAAA   40    I
+Zulmira2Ab    17 S
+Olivia111     12  S
+SamuelSimoes   56   D   1
+SandraSSS      56    D   1
+GUNdsAOAxbA       20    D  3
+GdUNAOBscB        25   D   10
+gunao64209      14   D    5
+PauloAlves123   34   D   4
+Carlos1111     20   D    3
+CarlaCardoso  34   D   7
+SandraMotaA1   24  S 
+PedroPedra   27    S
+DianaDDDDD      89    S
+TobiasFFFF   98    S
+LeonardoLL  10   S
+Carlsos1b1     20   D    3
+CarslaCardoso  34   D   7
+SansdraMotaA1   24  S
+PesdroPedra   27    S
+DisanaDaD      89    S
+TsobiasFaF    98    S
+LesonardoL  10   S
+Caarlsos11     20   D    3
+CaarslaCardoso  34   D   7
+aSansdraMotaA1   24  S
+PaesdroPedra   27    S
+DaaisanaD     89    S
+aTsobiasFF    98    S
+LaesonardoL  10   S
+
