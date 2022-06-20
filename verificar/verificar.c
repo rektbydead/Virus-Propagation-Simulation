@@ -1,10 +1,13 @@
 
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h> 
 
 #include "../utils/utils.h"
 #include "../verificar/verificar.h"
 #include "../person/person.h"
 #include "../room/room.h"
+
 
 int verifyFreeSpace(pRoom roomList, int total, int placeID) {
     for (int i = 0; i < total; i++) { 
@@ -104,33 +107,32 @@ pPerson verifyRoomChange(int N, int fromID, int toID, pPerson p, pRoom roomList,
         return p;
     }
 
-    int lista[N];
-    for (int i = 0; i < N; i++) //gera o total de infetados
-        lista[i] = intUniformRnd(0, contadorPersons - 1);
+    int *list = malloc(sizeof(int) * N);
+    for (int i = 0; i < N; i++)
+        list[i] = intUniformRnd(0, fromCapacity - 1);
 
 
-    pPerson devolver = NULL, adicionar;
     int index = -1;
     while (p != NULL) {
         index++;
-        adicionar = malloc(sizeof(Person));
-        if (adicionar == NULL) {
-            printf("\nErro ao alocar espaço na memoria. (verifyRoomChange)");
-            return p;
+            
+        if (p->placeID != toID) {
+            p = p->next;
+            continue;
         }
-        strcpy(adicionar->name, p->nome);
-        adicionar->idade = p->idade;
-        adicionar->status = p->status;
-        adicionar->DiasDoente = p->DiasDoente;
-        adicionar->placeID = p->placeID;
-        if (p->placeID == toID)  //se for diferença passa
-            for (int i = 0; i < N; i++)
-                if (lista[i] == index)
-                    adicionar->placeID = fromID;
-        adicionar->next = NULL;
-        devolver = addPerson(devolver, adicionar);
+
+        for (int i = 0; i < N; i++) {
+            if (list[i] != index)
+                continue;
+                
+            p->placeID = toID;
+            break;
+        }
+
         p = p->next;
     }
-    return devolver;
+
+    free(list);
+    return p;
 
 }

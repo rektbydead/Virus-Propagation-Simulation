@@ -4,6 +4,8 @@
 
 typedef struct person person, *pPerson;
 
+#include "../room/room.h"
+
 #define SICK 'D'
 #define HEALTHY 'S'   
 #define IMMUNE 'I'
@@ -25,7 +27,13 @@ pPerson addPerson(pPerson p, pPerson pPerson);
 
 void mostraTudo(pPerson c);
 
-pPerson atribuirLocais(pPerson p, pRoom s, int total);
+pPerson assignRooms(pPerson p, pRoom s, int total);
+
+int getNumberOfFullPlaces(pRoom r, int nRooms);
+
+void showPerson(pPerson p);
+
+pPerson readPersonFile(char *fileName, pPerson p);
 
 #endif
 

@@ -1,48 +1,49 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "sala.c"
-#include "Persons.c"
-#include "simulacao.c"
-#include "verificar.c"
-#include "opcoes.c"
+#include "./person/person.h"
+#include "./room/room.h"
+#include "./simulation/simulation.h"
+#include "./options/options.h"
+#include "./verificar/verificar.h"
+#include "./utils/utils.h"
 
 
 int main() {
     initRandom();
     pRoom roomList = NULL;
-    pPerson ArrayPersons[3];
+    pPerson personsList[3];
     for (int i = 0; i < 3; i++)
-        ArrayPersons[i] = NULL;
+        personsList[i] = NULL;
 
-    char nomeP[100];
-    char nomeL[100];
+    char nameP[100];
+    char nameL[100];
     int total = 0;
 
     printf("Ficheiro de Persons:");
-    scanf(" %99s", nomeP);
+    scanf(" %99s", nameP);
     printf("\nFicheiro de Local:");
-    scanf(" %99s", nomeL);
+    scanf(" %99s", nameL);
 
 
-    roomList = readRoomsFile(nomeL, &total); //Ficheiro sala.c
+    roomList = readRoomsFile(nameL, &total);
     if (roomList == NULL)
         return 0;
 
-    if (verifyRooms(roomList, total) == 1) //Ficheiro sala.c
+    if (verifyRooms(roomList, total) == 1)
         return 0;
 
     printf("\nLeitura e verificacao dos locais executada com sucesso.");
 
-    for (int i = 0; i < total; i++) //dar print a todas as salas
-        printRoom(roomList[i]); //Ficheiro sala.c
+    for (int i = 0; i < total; i++) 
+        printRoom(roomList[i]);
 
-    pPerson listaPersons = NULL;
-    listaPersons = readPersonFile(nomeP, listaPersons); //Ficheiro jog.c
-    if (listaPersons == NULL)
+    pPerson p = NULL;
+    p = readPersonFile(nameP, p); 
+    if (p == NULL)
         return 0;
 
-    listaPersons = atribuirLocais(listaPersons, roomList, total); //Ficheiro jog.c
-    if (listaPersons == NULL)
+    p = assignRooms(p, roomList, total); 
+    if (p == NULL)
         return 0;
 
     printf("\n\nLeitura e verificacao das Persons executada com sucesso.");
@@ -52,60 +53,62 @@ int main() {
     fflush(stdin);
     printf("\n\nClique enter tecla para avancar!");
     getchar();
-    limparecra(); //Ficheiro utils.c
+    cleanScreen();
 
 
-    int IteracoesVezes = 0;
-    int ApresentarEstatisticaVezes = 0;
-    int addSickPersonVezes = 0;
-    int TransferirPersonVezes = 0;
-    int VoltarAtrasVezes = 0;
-    int opcao = 0;
+    int nIteration = 0;
+    int nShowStatistics = 0;
+    int nAddSickPerson = 0;
+    int nTransferPeople = 0;
+    int nGoBack = 0;
+    int option = 0;
     do {
         fflush(stdin);
         printf("\n");
-        printf("\n* Iteracao numero: %d", IteracoesVezes);
-        printf("\n* 1. Avancar 1 iteracao na simulacao (Fica organizado pelo o ID dos locais!)");
+        printf("\n* Iteracao numero: %d", nIteration);
+        printf("\n* 1. Avancar 1 iteracao na simulation (Fica organizado pelo o ID dos locais!)");
         printf("\n* 2. Apresentar estatistica");
         printf("\n* 3. Adicionar doente");
         printf("\n* 4. Transferir Persons");
         printf("\n* 5. Voltar atras");
-        printf("\n* 6. Terminar Simulacao");
+        printf("\n* 6. Terminar simulation");
         printf("\n");
-        printf("\nOpcao:");
-        scanf("%d", &opcao);
-        switch (opcao) {
+
+        printf("\nopcao:");
+        scanf("%d", &option);
+
+        switch (option) {
             case 1:
-                IteracoesVezes++;
-                ArrayPersons[2] = ArrayPersons[1];
-                ArrayPersons[1] = ArrayPersons[0];
-                ArrayPersons[0] = listaPersons;
-                listaPersons = nextimaIteracao(listaPersons, roomList, total);
+                nIteration++;
+                personsList[2] = personsList[1];
+                personsList[1] = personsList[0];
+                personsList[0] = p;
+                p = nextIteration(p, roomList, total);
                 printf("\nVoce avancou de iteracao com sucesso");
                 break;
             case 2:
-                ApresentarEstatisticaVezes++;
-                ApresentarEstatistica(listaPersons, roomList, total);
+                nShowStatistics++;
+                showStatistics(p, roomList, total);
                 break;
             case 3:
-                addSickPersonVezes++;
-                listaPersons = addSickPerson(roomList, total, listaPersons);
+                nAddSickPerson++;
+                p = addSickPerson(roomList, total, p);
                 break;
             case 4:
-                TransferirPersonVezes++;
-                listaPersons = TransferirPersons(roomList, total, listaPersons);
+                nTransferPeople++;
+                p = transferPersons(roomList, total, p);
                 break;
             case 5:
-                VoltarAtrasVezes++;
-                listaPersons = VoltarAtras(ArrayPersons, listaPersons);
+                nGoBack++;
+                p = goBack(personsList, p);
                 break;
         }
-    } while (opcao != 6);
+    } while (option != 6);
 
-    EscreverNoFicheiro(listaPersons, roomList, total, IteracoesVezes,
-                       ApresentarEstatisticaVezes, addSickPersonVezes, TransferirPersonVezes, VoltarAtrasVezes);
+    writeToFile(p, roomList, total, nIteration,
+                       nShowStatistics, nAddSickPerson, nTransferPeople, nGoBack);
 
     free(roomList);
-    freePersons(listaPersons);
+    freePersons(p);
     return 0;
 }

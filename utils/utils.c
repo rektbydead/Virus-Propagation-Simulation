@@ -20,7 +20,7 @@ int probEvento(float prob) {
     return prob > ((float) rand() / RAND_MAX);
 }
 
-void limparecra() {
+void cleanScreen() {
     for (int i = 0; i < 200; i++)
         printf("\n");
 }

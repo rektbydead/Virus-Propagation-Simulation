@@ -17,7 +17,7 @@ struct room {
 };
 
 
-room *readRoomsFile(char *nomeFich, int *total);
+room *readRoomsFile(char *nameFich, int *total);
 
 void printRoom(room r);
 

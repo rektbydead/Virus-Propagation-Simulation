@@ -2,8 +2,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include "Person.h"
+
 #include "../room/room.h"
 #include "../verificar/verificar.h"
+#include "../utils/utils.h"
 
 
 pPerson addPerson(pPerson p, pPerson add) {
@@ -24,10 +26,14 @@ pPerson addPerson(pPerson p, pPerson add) {
 
 void mostraTudo(pPerson p) {  
     while (p != NULL) {
-        printf("\n%s\t%d\t%c\t%d\t%d", p->name, p->age, p->status, p->nSickDays, p->placeID);
+        showPerson(p);
 
         p = p->next;
     }
+}
+
+void showPerson(pPerson p) {
+    printf("\n%s\t%d\t%c\t%d\t%d", p->name, p->age, p->status, p->nSickDays, p->placeID);
 }
 
 void freePersons(pPerson c) {
@@ -93,9 +99,9 @@ pPerson readPersonFile(char *fileName, pPerson p) {
     return p;
 }
 
-pPerson atribuirLocais(pPerson p, pRoom r, int nRooms) {
+pPerson assignRooms(pPerson p, pRoom r, int nRooms) {
     while (p != NULL) {
-        int nFullPlaces = getNumberOfFullPlaces(readPersonFile, nRooms);
+        int nFullPlaces = getNumberOfFullPlaces(r, nRooms);
 
         if (nFullPlaces == nRooms) {
             printf("\nTodos os lugares foram preenchidos, porem sobraram Persons sem local.");

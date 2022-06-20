@@ -4,6 +4,8 @@
         "stdio.h": "c",
         "person.h": "c",
         "verificar.h": "c",
-        "utils.h": "c"
+        "utils.h": "c",
+        "options.h": "c",
+        "simulation.h": "c"
     }
 }
