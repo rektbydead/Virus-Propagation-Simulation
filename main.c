@@ -19,11 +19,8 @@ int main() {
     char nameL[100];
     int total = 0;
 
-    printf("Ficheiro de Persons:");
-    scanf(" %99s", nameP);
     printf("\nFicheiro de Local:");
     scanf(" %99s", nameL);
-
 
     roomList = readRoomsFile(nameL, &total);
     if (roomList == NULL)
@@ -37,14 +34,21 @@ int main() {
     for (int i = 0; i < total; i++) 
         printRoom(roomList[i]);
 
+    printf("Ficheiro de Persons:");
+    scanf(" %99s", nameP);
+
     pPerson p = NULL;
     p = readPersonFile(nameP, p); 
-    if (p == NULL)
+    if (p == NULL) {
+        printf("Leave on readPersonFile");
         return 0;
+    }
 
     p = assignRooms(p, roomList, total); 
-    if (p == NULL)
+    if (p == NULL) {
+        printf("Leave on assignRooms");
         return 0;
+    }
 
     printf("\n\nLeitura e verificacao das Persons executada com sucesso.");
     printf("\nLocais atribuidos com sucesso.");

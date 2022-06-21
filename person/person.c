@@ -9,18 +9,15 @@
 
 
 pPerson addPerson(pPerson p, pPerson add) {
-    pPerson aux;
-
     if (p == NULL) {
         return add;
     }
 
-    aux = p;
+    pPerson aux = p;
     while (aux->next != NULL)
         aux = aux->next;
 
     aux->next = add;
-
     return p;
 }
 
@@ -60,24 +57,37 @@ pPerson readPersonFile(char *fileName, pPerson p) {
     int nSickDays;
 
     while (fscanf(f, "%s %d %c %d", name, &age, &status, &nSickDays) != EOF) {
-        pPerson temp = malloc(sizeof(pPerson));
+        pPerson temp = malloc(sizeof(person));
 
         if (temp == NULL) {
             printf("\nErro na alocacao de memoria! (Leitura das Persons)");
             return NULL;
         }
+        
+        pPerson aux = p;
+        while (aux != NULL) { 
+            if (strcmp(name, aux->name) == 0) {
+                printf("\nJa existe uma Person com esse name, entao a operacao foi cancelada.");
+                return NULL;
+            }
 
-        if (verifyInputValues(age, name, nSickDays, p) == 1) return NULL;
+            aux = aux->next;
+        }
 
-        if (status == SICK && nSickDays == 0) { 
+        if (age < 1) {
+            printf("\nA idade introduzida e negativa ou zero, entao a operacao foi cancelada.");
+            return NULL;
+        }   
+
+        if (status == SICK && nSickDays <= 0) { 
             printf("\nFoi encontrado uma doente, doente a um numero de dias inválido!");
             return NULL;
         }
 
-        if (status != SICK && nSickDays != 0) {
-            printf("\nFoi encontrado uma pessoa nao doente, com dias doente setados");
-            return NULL;
-        }
+        // if (status != SICK && nSickDays != 0) {
+        //     printf("\nFoi encontrado uma pessoa nao doente, com dias doente setados");
+        //     return NULL;
+        // }
 
         if (status != IMMUNE && status != HEALTHY && status != SICK) {
             printf("\nFoi encontrado uma Person com status invalido!");
@@ -88,7 +98,7 @@ pPerson readPersonFile(char *fileName, pPerson p) {
         strcpy(temp->name, name);
         temp->status = status;
         temp->age = age;
-        temp->nSickDays = nSickDays;
+        temp->nSickDays = status == SICK ? nSickDays : 0;
         temp->placeID = NO_ROOM;
         temp->next = NULL;
 
@@ -100,12 +110,12 @@ pPerson readPersonFile(char *fileName, pPerson p) {
 }
 
 pPerson assignRooms(pPerson p, pRoom r, int nRooms) {
-    while (p != NULL) {
+    pPerson aux = p;
+    while (aux != NULL) {
         int nFullPlaces = getNumberOfFullPlaces(r, nRooms);
 
         if (nFullPlaces == nRooms) {
             printf("\nTodos os lugares foram preenchidos, porem sobraram Persons sem local.");
-
             return p;
         }           
 
@@ -116,8 +126,8 @@ pPerson assignRooms(pPerson p, pRoom r, int nRooms) {
 
         r[index].capacity++;
         
-        p->placeID = r[index].id;
-        p = p->next;
+        aux->placeID = r[index].id;
+        aux = aux->next;
     }
     
     return p;

@@ -1,0 +1,27 @@
+Iterou 2 vezes
+Apresentou a estatistica 0 vezes.
+Adicionou doentes 0 vezes
+Transferio pessoas 2 vezes
+Voltou atras 3 vezes
+
+TOTAL DE PESSOAS: 161
+Sala: 1
+Total de pessoas na sala: 38
+Total de doentes na sala: 30, Taxa de doentes: 78.9%
+Total de saudaveis na sala: 3, Taxa de saudaveis: 7.9%
+Total de imunes na sala: 5, Taxa de imunes: 13.2%
+Sala: 2
+Total de pessoas na sala: 44
+Total de doentes na sala: 35, Taxa de doentes: 79.5%
+Total de saudaveis na sala: 5, Taxa de saudaveis: 11.4%
+Total de imunes na sala: 4, Taxa de imunes: 9.1%
+Sala: 3
+Total de pessoas na sala: 33
+Total de doentes na sala: 29, Taxa de doentes: 87.9%
+Total de saudaveis na sala: 2, Taxa de saudaveis: 6.1%
+Total de imunes na sala: 2, Taxa de imunes: 6.1%
+Sala: 4
+Total de pessoas na sala: 46
+Total de doentes na sala: 41, Taxa de doentes: 89.1%
+Total de saudaveis na sala: 0, Taxa de saudaveis: 0.0%
+Total de imunes na sala: 5, Taxa de imunes: 10.9%

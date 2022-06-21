@@ -1,0 +1,92 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/USER/Desktop/Trabalho programacao/programa/main.c
+stdio.h
+-
+stdlib.h
+-
+sala.c
+C:/Users/USER/Desktop/Trabalho programacao/programa/sala.c
+pessoas.c
+C:/Users/USER/Desktop/Trabalho programacao/programa/pessoas.c
+simulacao.c
+C:/Users/USER/Desktop/Trabalho programacao/programa/simulacao.c
+verificar.c
+C:/Users/USER/Desktop/Trabalho programacao/programa/verificar.c
+opcoes.c
+C:/Users/USER/Desktop/Trabalho programacao/programa/opcoes.c
+
+C:/Users/USER/Desktop/Trabalho programacao/programa/opcoes.c
+stdio.h
+-
+opcoes.h
+C:/Users/USER/Desktop/Trabalho programacao/programa/opcoes.h
+utils.h
+C:/Users/USER/Desktop/Trabalho programacao/programa/utils.h
+
+C:/Users/USER/Desktop/Trabalho programacao/programa/opcoes.h
+
+C:/Users/USER/Desktop/Trabalho programacao/programa/pessoas.c
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+pessoas.h
+C:/Users/USER/Desktop/Trabalho programacao/programa/pessoas.h
+utils.c
+C:/Users/USER/Desktop/Trabalho programacao/programa/utils.c
+
+C:/Users/USER/Desktop/Trabalho programacao/programa/pessoas.h
+
+C:/Users/USER/Desktop/Trabalho programacao/programa/sala.c
+stdio.h
+-
+sala.h
+C:/Users/USER/Desktop/Trabalho programacao/programa/sala.h
+stdlib.h
+-
+string.h
+-
+
+C:/Users/USER/Desktop/Trabalho programacao/programa/sala.h
+
+C:/Users/USER/Desktop/Trabalho programacao/programa/simulacao.c
+stdio.h
+-
+simulacao.h
+C:/Users/USER/Desktop/Trabalho programacao/programa/simulacao.h
+utils.h
+C:/Users/USER/Desktop/Trabalho programacao/programa/utils.h
+
+C:/Users/USER/Desktop/Trabalho programacao/programa/simulacao.h
+
+C:/Users/USER/Desktop/Trabalho programacao/programa/utils.c
+stdio.h
+-
+stdlib.h
+-
+time.h
+-
+utils.h
+C:/Users/USER/Desktop/Trabalho programacao/programa/utils.h
+
+C:/Users/USER/Desktop/Trabalho programacao/programa/utils.h
+
+C:/Users/USER/Desktop/Trabalho programacao/programa/verificar.c
+stdio.h
+-
+utils.h
+C:/Users/USER/Desktop/Trabalho programacao/programa/utils.h
+verificar.h
+C:/Users/USER/Desktop/Trabalho programacao/programa/verificar.h
+
+C:/Users/USER/Desktop/Trabalho programacao/programa/verificar.h
+

@@ -20,17 +20,21 @@ pRoom readRoomsFile(char *fileName, int *total) {
 
     *total = 0;
 
-    pRoom roomList; 
-    room r;
-    while (fread(&r, sizeof(room), 1, f) == 1) { 
-        roomList = realloc(roomList, sizeof(room) * (*total + 1)); 
+    pRoom roomList = NULL; 
+    room r; 
+    
+    // it takes the size of an int, (quick fix... the binary files have the old structure saved which has less 1 int variable)
+    while (fread(&r, sizeof(room) - sizeof(int), 1, f) == 1) { 
+        printf("%d - %d %d %d \n", r.id, r.connections[0],r.connections[1],r.connections[2]);
 
+        roomList = realloc(roomList, sizeof(room) * (*total + 1)); 
         if (roomList == NULL) {
             printf("\nErro no alocamente de memoria! (Leitura dos Ficheiros)");
             return NULL;
         }
 
-        roomList[*total++] = r; 
+        r.capacity = 0;
+        roomList[(*total)++] = r; 
     }
 
     fclose(f);

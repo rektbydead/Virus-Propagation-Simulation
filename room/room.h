@@ -11,9 +11,8 @@ typedef struct room room, *pRoom;
 struct room {
     int id; // id numérico do local
     int maxCapacity; // capacidade máxima
-    int capacity;
-    
     int connections[MAX_CONNECTION]; // id das ligações (-1 nos casos não usados)
+    int capacity; // number of people in the room
 };
 
 

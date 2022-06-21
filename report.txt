@@ -1,0 +1,27 @@
+Iterou 2 vezes
+Apresentou a estatistica 1 vezes.
+Adicionou doentes 1 vezes
+Transferio Persons 2 vezes
+Voltou atras 1 vezes
+
+TOTAL DE PersonS: 6
+Sala: 1
+Total de Persons na sala: 2
+Total de doentes na sala: 1, Taxa de doentes: 50.0%
+Total de saudaveis na sala: 1, Taxa de saudaveis: 50.0%
+Total de imunes na sala: 0, Taxa de imunes: 0.0%
+Sala: 2
+Total de Persons na sala: 2
+Total de doentes na sala: 0, Taxa de doentes: 0.0%
+Total de saudaveis na sala: 2, Taxa de saudaveis: 100.0%
+Total de imunes na sala: 0, Taxa de imunes: 0.0%
+Sala: 3
+Total de Persons na sala: 0
+Total de doentes na sala: 0, Taxa de doentes: nan%
+Total de saudaveis na sala: 0, Taxa de saudaveis: nan%
+Total de imunes na sala: 0, Taxa de imunes: nan%
+Sala: 4
+Total de Persons na sala: 2
+Total de doentes na sala: 0, Taxa de doentes: 0.0%
+Total de saudaveis na sala: 1, Taxa de saudaveis: 50.0%
+Total de imunes na sala: 1, Taxa de imunes: 50.0%
