@@ -1,3 +1,0 @@
-C:/Users/USER/Desktop/Trabalho programacao/programa/cmake-build-debug/CMakeFiles/programa.dir
-C:/Users/USER/Desktop/Trabalho programacao/programa/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/USER/Desktop/Trabalho programacao/programa/cmake-build-debug/CMakeFiles/rebuild_cache.dir
